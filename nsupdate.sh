@@ -75,7 +75,7 @@ do
 		PART_NSLOOKUP=$(nslookup -sil -type=$TYPE $DOMAIN - ns.inwx.de | tail -2 | head -1 | cut -d' ' -f5)
 		NSLOOKUP=${PART_NSLOOKUP%"."}
       else
-	  	NSLOOKUP=$(nslookup -sil -type=$TYPE $DOMAIN - ns.inwx.de | tail -2 | head -1 | cut -d' ' -f2)
+	  	NSLOOKUP=$(nslookup $DOMAIN ns.inwx.de | tail -2 | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
 	  fi
    fi
 
